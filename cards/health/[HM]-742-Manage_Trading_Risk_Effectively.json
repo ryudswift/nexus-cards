@@ -1,0 +1,49 @@
+{
+  "id": "HM-742-Manage_Trading_Risk_Effectively",
+  "cardName": "Risk Horizon Navigator",
+  "title": "742-Manage Trading Risk Effectively-sudev",
+  "summary": "Understanding how moving up time frames in trading increases risk and how to manage that risk effectively using trend lines and position sizing.",
+  "vidUrl": "https://www.youtube.com/watch?v=E_m8LwjiL30",
+  "docUrl": "https://docs.google.com/document/d/1IE50VZl9PW5IEilrPAgWh9b9hnbkpU2apXHNYCx-KEI/edit?tab=t.0#heading=h.n56e9sthavvn",
+  "pdfUrl": "",
+  "audioUrl": "https://drive.google.com/file/d/10KCRWxuxbNnSXvEFCpMuPdymN9E4y1kD/view?usp=drivesdk",
+  "coverArtUrl": "https://img.youtube.com/vi/E_m8LwjiL30/maxresdefault.jpg",
+  "rarityScore": 82,
+  "status": "Not Started",
+  "level": 1,
+  "ownerId": "SudoDev",
+  "category": "Health",
+  "subcategory": "Mind",
+  "latentAbility": "Provides +5%冷静 (calm) bonus during high-stress market simulations.",
+  "insight": 520,
+  "clarity": 75,
+  "rarity": 82,
+  "quizLevel1": {
+    "questions": [
+      {
+        "text": "How does moving to a higher time frame generally affect risk?",
+        "options": ["Decreases risk significantly", "Has no effect on risk", "Increases risk", "Makes risk easier to predict"],
+        "correct": "Increases risk"
+      },
+      {
+        "text": "What is one way to manage increased risk on higher time frames?",
+        "options": ["Increase position size", "Trade more frequently", "Reduce position size", "Ignore trend lines"],
+        "correct": "Reduce position size"
+      }
+    ]
+  },
+  "quizLevel2": {
+    "questions": [
+      {
+        "text": "What is the purpose of using 'action lines' and 'safety lines'?",
+        "options": ["To identify support and resistance levels", "To define entry points and risk levels using trend lines", "To predict future price movements", "To automate trading signals"],
+        "correct": "To define entry points and risk levels using trend lines"
+      },
+      {
+        "text": "According to the summary, what is a benefit of trading on lower time frames?",
+        "options": ["Less frequent monitoring required", "Higher potential profit per trade", "Tighter risk controls", "Longer holding periods"],
+        "correct": "Tighter risk controls"
+      }
+    ]
+  }
+}

@@ -1,24 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- CONFIGURATION ---
-    // Aligns with PRD v1.07 concepts for local data structure
     const config = {
         playerAge: 42, // As per PRD, for level capping
-        ownerId: 'SudoDev', // Static owner ID for MVP
-        // Future: paths for actual JSON files
-        // cardsDbPath: './cards/cards-db.json',
-        // cardsDir: './cards/'
+        ownerId: 'SudoDev' // Static owner ID for MVP
     };
 
     // --- APPLICATION STATE ---
-    // state.allCardData holds the full data from individual JSONs (simulated)
-    // state.db holds the compiled data for the dashboard (like cards-db.json)
+    // In a full implementation, this would be populated by reading JSON files.
     const state = {
-        allCardData: {}, // Simulates data loaded from individual /cards/{category}/*.json files
-        db: [],          // Simulates the data in cards-db.json
+        allCardData: {}, // Will hold full data from individual JSONs (key: cardId)
+        db: [],          // Will hold simplified data for dashboard rendering
         playerXP: 0,
         trueLevel: 1,
-        currentCardId: null,
-        currentQuiz: null
+        currentCardId: null, // ID of card in main modal
+        currentQuiz: null    // Data for quiz in progress
     };
 
     // --- DOM ELEMENT REFERENCES ---
@@ -51,57 +46,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const quizResultText = document.getElementById('quiz-result-text');
 
     /**
-     * SIMULATES the file sync process.
-     * In a real app (Phase 2+), this would scan directories like:
-     * - /cards/health/
-     * - /cards/wealth/
-     * - /cards/relationships/
-     * for files matching the pattern: [HM|HB|HS|WI|WT|WS|RS|RF|RE]-*.json
-     * It would read each file, parse its JSON, and compile/update cards-db.json.
-     * For this MVP (v1.11), it uses hardcoded sample data.
+     * Placeholder for the file sync process.
+     * In a real app, this would scan directories and read JSON files.
+     * For now, it initializes with an empty state.
      */
     function simulateFileSync() {
-        syncStatus.textContent = 'Scanning directories... (Simulated)';
-        console.log("Simulating sync: Reading individual JSON files from /cards/*/");
-        
-        // This is our simulated "found files" data.
-        // In reality, this would come from reading actual .json files.
-        const foundFilesData = getSampleIndividualCardJSONs();
-        
-        // Reset state
+        syncStatus.textContent = 'Scanning directories... (Placeholder)';
+        console.log("Simulating sync: In a real app, this would read /cards/*/*.json");
+
+        // Reset state for clean sync
         state.allCardData = {};
-        const newDb = [];
+        state.db = [];
 
-        foundFilesData.forEach(cardData => {
-            // Store the full data for later use (like quizzes, detailed views)
-            // Keyed by card ID for quick lookup
-            state.allCardData[cardData.id] = cardData;
+        syncStatus.textContent = 'Sync complete. No cards found.';
+        setTimeout(() => {
+            if (syncStatus.textContent === 'Sync complete. No cards found.') {
+                syncStatus.textContent = '';
+            }
+        }, 4000);
 
-            // Create the entry for our "cards-db.json" (dashboard data)
-            newDb.push({
-                id: cardData.id,
-                cardName: cardData.cardName,
-                title: cardData.title,
-                coverArtUrl: cardData.coverArtUrl,
-                rarityScore: cardData.rarityScore,
-                status: cardData.status, // Not Started, In Progress, Complete
-                level: cardData.level,   // 1, 2, 3
-                category: cardData.category,
-                summary: cardData.summary,
-                latentAbility: cardData.latentAbility,
-                docUrl: cardData.docUrl
-                // guidePath could be added here if static HTML guides are generated
-            });
-        });
-
-        // Update the central "database" state
-        state.db = newDb;
-
-        syncStatus.textContent = `Sync complete. ${state.db.length} cards loaded.`;
-        setTimeout(() => { syncStatus.textContent = ''; }, 4000);
-
-        // Render the dashboard with the new data
-        render();
+        render(); // Render the empty state
     }
 
     /**
@@ -111,7 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (state.db.length > 0) {
             loadingSpinner.style.display = 'none';
         } else {
-            loadingSpinner.innerHTML = `<p>No cards found. Click "Sync Library" to begin.</p>`;
+            // Update spinner message if library is empty
+            loadingSpinner.innerHTML = `<p class="text-lg">Click "Sync Library" to begin.</p>`;
         }
         cardLibrary.innerHTML = '';
         calculatePlayerLevel();
@@ -149,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Renders the Nexus Cards into the library grid.
-     * Uses the data from state.db
      */
     function renderCards() {
         state.db.forEach(card => {
@@ -157,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cardContainer.className = 'perspective-container';
 
             // Determine border style based on card level
-            let borderClass = 'border border-gray-700'; // Default
+            let borderClass = 'border border-gray-700'; // Default for Level 1
             if (card.level === 2) borderClass = 'level-2-border';
             if (card.level === 3) borderClass = 'level-3-border';
 
@@ -171,8 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="${card.coverArtUrl}" alt="${card.cardName}" class="max-h-full max-w-full object-contain rounded-md">
                     </div>
                     <div class="text-center text-xs">
-                        ${card.level === 3 ? 
-                            `<span class="font-bold text-yellow-300 tracking-widest">:: MASTERED ::</span>` : 
+                        ${card.level === 3 ?
+                            `<span class="font-bold text-yellow-300 tracking-widest">:: MASTERED ::</span>` :
                             `<span class="text-gray-500">Level ${card.level}</span>`
                         }
                     </div>
@@ -204,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Populate Back of Card
         modalBackTitle.textContent = `${card.cardName} - Intel`;
-        
+
         // Determine Latent Ability display
         let latentAbilityHTML = card.level === 3 ?
             `<p class="text-sm text-yellow-300"><span class="font-bold">Latent Ability:</span> ${card.latentAbility}</p>` :
@@ -223,15 +187,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const quizBtn = createModalButton('Take Quiz: Level 1', 'bg-green-600', () => startQuiz(card.id, 1));
             modalActionButtons.appendChild(quizBtn);
         } else if (card.level === 2) {
+            // Order: Guide first, then Quiz (as in Beta v1.11)
             const guideBtn = createModalButton('View Full Guide', 'bg-blue-600', () => window.open(card.docUrl, '_blank'));
             const quizBtn = createModalButton('Take Quiz: Level 2', 'bg-green-600', () => startQuiz(card.id, 2));
-            // Order matters: Guide first, then Quiz
             modalActionButtons.appendChild(guideBtn);
             modalActionButtons.appendChild(quizBtn);
         } else if (card.level === 3) {
             const guideBtn = createModalButton('View Full Guide', 'bg-blue-600', () => window.open(card.docUrl, '_blank'));
             modalActionButtons.appendChild(guideBtn);
-            // Potentially add a "Review" or "Apply" button here in the future
         }
 
         // Reset card flip state and show modal
@@ -287,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         quizTitle.textContent = `${fullCardData.cardName} - Quiz Level ${level}`;
         quizQuestionsArea.innerHTML = '';
         quizResultText.textContent = '';
+        quizResultText.className = 'text-lg font-semibold'; // Reset result text style
         quizSubmitBtn.disabled = false;
 
         // Dynamically create quiz questions
@@ -397,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             quizResultText.textContent = `Failed. (${score}/${questions.length}). Review and try again!`;
             quizResultText.className = 'text-lg font-semibold text-red-400';
-            
+
             // Close quiz modal after delay
             setTimeout(() => {
                 quizModal.classList.add('hidden');
@@ -427,112 +391,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /**
-     * Provides sample data simulating individual JSON card files.
-     * This mimics the structure expected from files like:
-     * /cards/health/[HM]-001-Mindfulness_Techniques.json
-     * /cards/wealth/[WI]-042-AI_Business_Prototyping.json
-     * In a real app, this data would come from reading and parsing those files.
-     * @returns {Array} - An array of card data objects.
-     */
-    function getSampleIndividualCardJSONs() {
-        // This function simulates the content that would be in individual .json files
-        return [
-            {
-                "id": "HM-001-Mindfulness_Techniques",
-                "cardName": "Zen Focus Matrix",
-                "title": "Mastering Mindfulness for Peak Performance",
-                "summary": "A concise summary of the core techniques for achieving a mindful state, focusing on breath awareness and non-judgmental observation of thoughts to enhance focus and reduce stress.",
-                "vidUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Placeholder
-                "docUrl": "https://docs.google.com/document/d/1W_ELeJVLKxj2Snem6wWxhVF-fCap4s0E6KkftlGXC9w/edit", // Example from your file
-                "coverArtUrl": "https://placehold.co/600x400/5a2a88/FFFFFF?text=Mindfulness",
-                "rarityScore": 78,
-                "status": "Not Started", // Initial status
-                "level": 1, // Initial level
-                "ownerId": "SudoDev",
-                "category": "Health",
-                "subcategory": "Mind",
-                "latentAbility": "Grants +15% Clarity for 2 hours after mastery.",
-                "quizLevel1": {
-                    "questions": [
-                        {
-                            "text": "What is a primary goal of mindfulness?",
-                            "options": ["Emptying the mind", "Observing thoughts without judgment", "Solving problems faster", "Achieving a trance state"],
-                            "correct": "Observing thoughts without judgment"
-                        },
-                        {
-                            "text": "A common mindfulness exercise is focusing on what?",
-                            "options": ["The future", "Past mistakes", "The breath", "Complex math"],
-                            "correct": "The breath"
-                        }
-                    ]
-                },
-                "quizLevel2": {
-                    "questions": [
-                        {
-                            "text": "How can mindfulness be applied during a stressful meeting?",
-                            "options": ["By leaving the room", "By focusing on your breath and physical sensations", "By interrupting others", "By checking your phone"],
-                            "correct": "By focusing on your breath and physical sensations"
-                        }
-                    ]
-                }
-                // guidePath would be added here if generated
-            },
-            {
-                "id": "WI-042-AI_Business_Prototyping",
-                "cardName": "AI Prototype Engine",
-                "title": "AI-Powered Business Prototyping",
-                "summary": "Leveraging generative AI tools to rapidly conceptualize, design, and test business ideas and Minimum Viable Products (MVPs) without needing deep technical expertise.",
-                "vidUrl": "https://www.youtube.com/watch?v=J_GCvfto07c", // From your file
-                "docUrl": "https://docs.google.com/document/d/1W_ELeJVLKxj2Snem6wWxhVF-fCap4s0E6KkftlGXC9w/edit", // From your file
-                "coverArtUrl": "https://placehold.co/600x400/885a2a/FFFFFF?text=AI+Business",
-                "rarityScore": 88,
-                "status": "In Progress",
-                "level": 2,
-                "ownerId": "SudoDev",
-                "category": "Wealth",
-                "subcategory": "Income",
-                "latentAbility": "Generates one new AI business idea per day.",
-                "quizLevel1": {
-                    "questions": [
-                        {
-                            "text": "What is a key advantage of AI prototyping?",
-                            "options": ["It guarantees profit", "It's always free", "Speed and low cost of iteration", "It requires a large team"],
-                            "correct": "Speed and low cost of iteration"
-                        }
-                    ]
-                },
-                "quizLevel2": {
-                    "questions": [
-                        {
-                            "text": "Which tool is best for generating a quick landing page copy?",
-                            "options": ["A calculator", "A large language model (LLM)", "A spreadsheet", "A video editor"],
-                            "correct": "A large language model (LLM)"
-                        }
-                    ]
-                }
-            },
-            {
-                "id": "RS-005-Self_Compassion",
-                "cardName": "Ego Resilience Field",
-                "title": "The Art of Self-Compassion",
-                "summary": "Techniques for treating yourself with the same kindness, understanding, and support you would offer a good friend, especially during times of failure or difficulty.",
-                "vidUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Placeholder
-                "docUrl": "https://docs.google.com/document/d/1IE50VZl9PW5IEilrPAgWh9b9hnbkpU2apXHNYCx-KEI/edit", // Example from your other file
-                "coverArtUrl": "https://placehold.co/600x400/2a885a/FFFFFF?text=Self+Compassion",
-                "rarityScore": 92,
-                "status": "Complete",
-                "level": 3,
-                "ownerId": "SudoDev",
-                "category": "Relationships",
-                "subcategory": "Self",
-                "latentAbility": "Reduces negative self-talk by 50%.",
-                "quizLevel1": { "questions": [] }, // No quiz needed if already mastered
-                "quizLevel2": { "questions": [] }
-            }
-        ];
-    }
-
     // --- EVENT LISTENERS & INITIALIZATION ---
     function init() {
         syncLibraryBtn.addEventListener('click', simulateFileSync);
@@ -540,13 +398,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Close modal if backdrop is clicked
         modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
         flipCardBtn.addEventListener('click', () => modalCard.classList.toggle('is-flipped'));
-        
+
         quizSubmitBtn.addEventListener('click', submitQuiz);
         // Close quiz modal if backdrop is clicked (optional)
         // quizModal.addEventListener('click', (e) => { if (e.target === quizModal) quizModal.classList.add('hidden'); });
 
-        // Initial load - simulate syncing the library on page load
-        simulateFileSync();
+        // Initial load - start with an empty library prompt
+        render();
     }
 
     init();

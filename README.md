@@ -1,46 +1,25 @@
-# Nexus Cards - MVP v1.05 (Local Data Draft)
+# Nexus Cards - MVP v1.11 (Simplified Base)
 
-A gamified learning platform that turns knowledge into collectible Nexus Cards. This version uses a local file structure for card data instead of the Notion API.
+A gamified learning platform that turns knowledge into collectible Nexus Cards. This version uses a simplified, simulated data structure to demonstrate the core UI and workflow based on PRD v1.07 concepts.
 
-## Features (v1.05)
+## Features (v1.11)
 
-- View a library of Nexus Cards organized by Category and Subcategory.
-- Cards are loaded from local Markdown files.
-- 3D tilt hover effect on cards.
-- Detailed modal view for each card.
-- Track Player Level (Dual-Level Display) and Completion Rate.
-- Deep space nebula themed UI.
-- **No external API dependencies for card data.**
+- View a library of Nexus Cards organized by Category.
+- Cards display a 3D tilt hover effect.
+- Detailed modal view with a flip animation to show card "Intel".
+- A 3-level mastery system for cards (Level 1: Discovered, Level 2: In Progress, Level 3: Mastered).
+- Interactive quizzes to level up cards from Level 1 to 2, and Level 2 to 3.
+- Dynamic action buttons on the card modal based on the card's current level.
+- Track Player Level (Dual-Level Display), Total Cards, Cards Mastered, and Mastery Rate.
+- Deep space nebula themed UI with level-based card styling.
 
 ## Tech Stack
 
 - HTML5
-- CSS (Tailwind via CDN)
+- CSS (Tailwind via CDN + custom `style.css`)
 - Vanilla JavaScript (ES6+)
-- Markdown for local data storage
+- Google Fonts (Inter)
 
-## Project Structure
+## Project Structure (Planned for PRD v1.07)
 
-See `cards/README-cards.md` for details on how card data is organized.
-
-- `index.html`: Main application page.
-- `style.css`: Custom styles.
-- `script.js`: Application logic.
-- `cards/`: Directory containing all card data as Markdown files.
-  - `README-cards.md`: Explains the data structure.
-  - `card-template.md`: Template for creating new cards.
-  - `Health/`, `Wealth/`, `Relationships/`: Category folders.
-
-## Setup Instructions
-
-1.  Clone or download this repository.
-2.  Open `index.html` in a modern web browser.
-3.  The application will automatically scan the `cards/` directory and load any `.md` files it finds, using the metadata in their frontmatter.
-
-## Changelog (v1.05)
-
-- **Shifted Data Source:** Removed dependency on Notion API. Card data is now loaded from local Markdown files within the `cards/` directory.
-- **New File Structure:** Defined a clear folder hierarchy (`cards/Category/Subcategory/`) for organizing knowledge.
-- **Markdown Template:** Introduced `cards/card-template.md` to standardize the format for card data.
-- **Local Data Loading:** Modified `script.js` logic to parse local Markdown files instead of fetching from Notion.
-- **Documentation:** Added `cards/README-cards.md` to explain the new local data structure.
+This version simulates the following intended file structure. Future versions will read actual files from these locations.

@@ -1,0 +1,39 @@
+{
+  "id": "WI-456-Futureproof_Skills_for_2030",
+  "cardName": "2030 Adaptability Matrix",
+  "title": "456-Futureproof Skills for 2030-sudev",
+  "summary": "The video emphasizes the importance of cultivating skills that foster human agency, interpersonal coordination, effective learning, AI proficiency, systems thinking, and authenticity in audience-building. As AI continues to advance, these skills are positioned to retain their economic value.",
+  "vidUrl": "https://www.youtube.com/watch?v=_0BwBkaxO4c",
+  "docUrl": "https://docs.google.com/document/d/13docYgyjfWG1ACen6xIFcO3bhNgffMdycSdZ_m96NxI/edit?tab=t.0#heading=h.n56e9sthavvn",
+  "pdfUrl": "",
+  "audioUrl": "https://drive.google.com/file/d/18q-f27w6GP4Go22tYS3iDvngOPEWZPy9/view?usp=drivesdk",
+  "coverArtUrl": "https://img.youtube.com/vi/_0BwBkaxO4c/maxresdefault.jpg",
+  "rarityScore": 90,
+  "status": "Not Started",
+  "level": 1,
+  "ownerId": "SudoDev",
+  "category": "Wealth",
+  "subcategory": "Income",
+  "latentAbility": "Provides a personalized weekly skill development prompt based on current trends.",
+  "insight": 350,
+  "clarity": 88,
+  "rarity": 90,
+  "quizLevel1": {
+    "questions": [
+      {
+        "text": "Which of the following is NOT listed as a key futureproof skill?",
+        "options": ["AI proficiency", "Systems thinking", "Job specialization in a single, stable field", "Effective learning"],
+        "correct": "Job specialization in a single, stable field"
+      }
+    ]
+  },
+  "quizLevel2": {
+    "questions": [
+      {
+        "text": "Why are these skills considered 'futureproof'?",
+        "options": ["They are easy to learn", "They will retain economic value as AI advances", "They are only useful for tech jobs", "They guarantee high income"],
+        "correct": "They will retain economic value as AI advances"
+      }
+    ]
+  }
+}

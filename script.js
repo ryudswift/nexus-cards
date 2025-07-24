@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- CONFIGURATION ---
     const config = {
-        notionApiKey: 'secret_YOUR_NOTION_TOKEN', // <-- Replace with your Notion Integration Token
-        databaseId: 'YOUR_DATABASE_ID', // <-- Replace with your Notion Database ID
+        notionApiKey: 'secret_Fs1VTIgGPftqkACzCC3O7sHtRC0fgUlS2m0wsF624wf', // <-- Replace with your Notion Integration Token
+        databaseId: '1de886ac25368153a0f5000c661b2b16', // <-- Replace with your Notion Database ID
         n8nWebhookUrl: 'https://n8n.sudev.site/webhook/yt-expert-sauce',
         playerAge: 42, // As per PRD, for level capping
         ownerId: 'SudoDev' // Static owner ID for MVP

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nexus Cards</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <div class="min-h-screen bg-[url('https://i.imgur.com/kfQ3d2I.jpg')] bg-cover bg-center">
+    <header class="p-6 text-center">
+      <h1 class="text-4xl font-bold">🌌 Nexus Cards</h1>
+      <p class="text-sm mt-2">Gamify your learning. Unlock rare knowledge artifacts.</p>
+    </header>
+
+    <!-- KPIs -->
+    <section class="p-6 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="bg-gray-800 p-4 rounded shadow">Total Cards Added: <span id="totalCards">0</span></div>
+        <div class="bg-gray-800 p-4 rounded shadow">Courses Completed: <span id="completedCards">0</span></div>
+        <div class="bg-gray-800 p-4 rounded shadow">Completion Rate: <span id="completionRate">0%</span></div>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded shadow mb-8">
+        <h2 class="text-xl font-semibold mb-2">Player Level</h2>
+        <p>Display Level: <span id="displayLevel">0</span> | True Level: <span id="trueLevel">0</span></p>
+      </div>
+
+      <div class="bg-gray-900 bg-opacity-60 p-4 rounded shadow mb-8">
+        <h2 class="text-xl font-semibold mb-2">Your Nexus Cards</h2>
+        <div id="cardGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="cardModal" class="fixed inset-0 hidden bg-black bg-opacity-75 flex items-center justify-center z-50">
+      <div class="bg-gray-800 p-6 rounded-lg max-w-md w-full relative">
+        <button id="closeModal" class="absolute top-2 right-2 text-xl">&times;</button>
+        <h2 id="modalTitle" class="text-2xl font-bold mb-2"></h2>
+        <p><strong>Summary:</strong> <span id="modalSummary"></span></p>
+        <p><strong>Rarity:</strong> <span id="modalRarity"></span></p>
+        <p><strong>Status:</strong> <span id="modalStatus"></span></p>
+        <a id="modalLink" href="#" target="_blank" class="block mt-2 text-blue-400 underline">Watch Video</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

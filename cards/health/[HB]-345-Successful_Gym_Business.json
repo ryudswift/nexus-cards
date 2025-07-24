@@ -1,0 +1,39 @@
+{
+  "id": "HB-345-Successful_Gym_Business",
+  "cardName": "Fitness Empire Blueprint",
+  "title": "345-Successful Gym Business-sudev",
+  "summary": "This video shares the journey of opening a gym and the practical lessons learned along the way that contributed to reaching $100,000 in revenue. It emphasizes taking calculated risks, leveraging bartering, understanding customer needs, and refining marketing strategies to build a successful business.",
+  "vidUrl": "https://www.youtube.com/watch?v=unshZobTt6Q",
+  "docUrl": "https://docs.google.com/document/d/1hUvZwEcoZT2j0DS-H9KAUOvGbQP2vONxo8l9xTw3vzw/edit?tab=t.0#heading=h.n56e9sthavvn",
+  "pdfUrl": "",
+  "audioUrl": "https://drive.google.com/file/d/1faDnylzve0KqUTvAUpKySTu-uVwUj1hg/view?usp=drivesdk",
+  "coverArtUrl": "https://img.youtube.com/vi/unshZobTt6Q/maxresdefault.jpg",
+  "rarityScore": 77,
+  "status": "Not Started",
+  "level": 1,
+  "ownerId": "SudoDev",
+  "category": "Health",
+  "subcategory": "Body",
+  "latentAbility": "Grants +5% discount negotiation ability with fitness equipment suppliers (in simulation).",
+  "insight": 320,
+  "clarity": 75,
+  "rarity": 77,
+  "quizLevel1": {
+    "questions": [
+      {
+        "text": "What is one key strategy mentioned for building a successful gym business?",
+        "options": ["Offering the lowest prices always", "Understanding customer needs", "Hiring the most trainers", "Having the largest space"],
+        "correct": "Understanding customer needs"
+      }
+    ]
+  },
+  "quizLevel2": {
+    "questions": [
+      {
+        "text": "What financial strategy was highlighted as helpful in the gym's early stages?",
+        "options": ["Taking large bank loans", "Leveraging bartering", "Spending heavily on ads", "Focusing only on high-end clients"],
+        "correct": "Leveraging bartering"
+      }
+    ]
+  }
+}

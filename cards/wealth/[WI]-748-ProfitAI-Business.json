@@ -1,0 +1,49 @@
+{
+  "id": "WI-748-ProfitAI-Business",
+  "cardName": "AI Prototype Engine",
+  "title": "748-ProfitAI-Business-sudev",
+  "summary": "This video showcases Riley Brown, a self-taught entrepreneur, who emphasizes the concept of \"vibe coding\"—a method of quickly creating apps using AI tools. The discussion targets aspiring creators lacking formal coding backgrounds, illustrating how they can build and launch viable tech solutions in a short time. This matters because it democratizes software development, allowing anyone with creativity and drive to innovate in the tech space.",
+  "vidUrl": "https://www.youtube.com/watch?v=J_GCvfto07c",
+  "docUrl": "https://docs.google.com/document/d/1W_ELeJVLKxj2Snem6wWxhVF-fCap4s0E6KkftlGXC9w/edit?tab=t.0#heading=h.n56e9sthavvn",
+  "pdfUrl": "",
+  "audioUrl": "https://drive.google.com/file/d/1e7L5ZClAFxXRyVIFcGZemQ6NbMaEB3Hp/view?usp=drivesdk",
+  "coverArtUrl": "https://img.youtube.com/vi/J_GCvfto07c/maxresdefault.jpg",
+  "rarityScore": 88,
+  "status": "Not Started",
+  "level": 1,
+  "ownerId": "SudoDev",
+  "category": "Wealth",
+  "subcategory": "Income",
+  "latentAbility": "Generates one new AI business idea per day.",
+  "insight": 450,
+  "clarity": 85,
+  "rarity": 88,
+  "quizLevel1": {
+    "questions": [
+      {
+        "text": "What is the core concept demonstrated by Riley Brown for building apps?",
+        "options": ["Traditional coding", "Vibe coding", "No-code platforms only", "Hiring developers"],
+        "correct": "Vibe coding"
+      },
+      {
+        "text": "Who is the primary target audience for this approach?",
+        "options": ["Experienced software engineers", "Aspiring creators without formal coding backgrounds", "Large corporations", "Graphic designers"],
+        "correct": "Aspiring creators without formal coding backgrounds"
+      }
+    ]
+  },
+  "quizLevel2": {
+    "questions": [
+      {
+        "text": "What is a key takeaway regarding the development process?",
+        "options": ["It guarantees immediate profit.", "It requires extensive market research upfront.", "Embrace failure and iterate quickly.", "Only use pre-built templates."],
+        "correct": "Embrace failure and iterate quickly."
+      },
+      {
+        "text": "What should you do after creating a prototype?",
+        "options": ["Sell it immediately.", "Launch it to a wide audience.", "Launch to a small group for feedback and iterate.", "Archive it and start a new project."],
+        "correct": "Launch to a small group for feedback and iterate."
+      }
+    ]
+  }
+}

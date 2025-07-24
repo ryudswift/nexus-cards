@@ -96,10 +96,12 @@ body::after {
 /* Card Level Styles */
 .level-2-border {
     box-shadow: 0 0 15px rgba(124, 58, 237, 0.7);
+    /* Purple pulse */
     border: 2px solid rgba(124, 58, 237, 0.8);
 }
 
 .level-3-border {
+    /* EPIC/MASTERED Card Styling */
     border: 2px solid;
     border-image-slice: 1;
     border-width: 2px;
@@ -148,12 +150,15 @@ body::after {
 
 .quiz-option.selected {
     background-color: #4c1d95;
+    /* Dark purple */
 }
 
 .quiz-option.correct {
     background-color: #166534;
+    /* Green */
 }
 
 .quiz-option.incorrect {
     background-color: #991b1b;
+    /* Red */
 }

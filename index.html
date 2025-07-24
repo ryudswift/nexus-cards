@@ -1,51 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nexus Cards</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Cards - Beta v1.01</title>
+    <!-- Tailwind CSS for rapid UI development -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Custom Styles for Theme and Effects -->
+    <style>
+        /* Use the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Deep Space Nebula Background */
+        .deep-space-nebula {
+            background-color: #0c0a18;
+            background-image:
+                radial-gradient(at 27% 37%, hsla(215, 98%, 61%, 0.1) 0px, transparent 50%),
+                radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 0.1) 0px, transparent 50%),
+                radial-gradient(at 52% 99%, hsla(355, 98%, 76%, 0.1) 0px, transparent 50%),
+                radial-gradient(at 10% 29%, hsla(256, 96%, 68%, 0.1) 0px, transparent 50%),
+                radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 0.1) 0px, transparent 50%),
+                radial-gradient(at 44% 47%, hsla(355, 98%, 68%, 0.1) 0px, transparent 50%);
+        }
+        /* 3D perspective for card hover effect */
+        .perspective-container {
+            perspective: 1000px;
+        }
+        /* Card styles and hover transform */
+        .nexus-card {
+            transform-style: preserve-3d;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .perspective-container:hover .nexus-card {
+            transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) scale3d(1.05, 1.05, 1.05);
+        }
+        /* Warframe-style Glare Effect */
+        .warframe-glare {
+            position: relative;
+            overflow: hidden;
+        }
+        .warframe-glare::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(110deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 60%);
+            transform: translateX(-100%);
+            animation: glare-animation 3s infinite ease-in-out;
+        }
+        /* Animation for the glare */
+        @keyframes glare-animation {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+            100% { transform: translateX(100%); }
+        }
+        /* EPIC Card Styling for completed courses */
+        .epic-card-border {
+             border: 2px solid;
+             border-image-slice: 1;
+             border-width: 2px;
+             border-image-source: linear-gradient(to left, #f7b733, #fc4a1a);
+             animation: epic-glow 2s infinite alternate;
+        }
+        @keyframes epic-glow {
+            from { box-shadow: 0 0 5px #fc4a1a, 0 0 10px #f7b733; }
+            to { box-shadow: 0 0 20px #fc4a1a, 0 0 30px #f7b733; }
+        }
+
+        /* --- New Styles for Modal Enhancement --- */
+        .modal-content {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-hidden {
+            opacity: 0;
+        }
+        .modal-visible {
+            opacity: 1;
+        }
+        .detail-section {
+            display: none;
+        }
+        .detail-section.active {
+            display: block;
+        }
+        .tab-button {
+            background-color: #374151; /* gray-700 */
+            border-color: #4b5563; /* gray-600 */
+        }
+        .tab-button.active {
+            background-color: #4f46e5; /* indigo-600 */
+            border-color: #4f46e5;
+        }
+        .markdown-content {
+           white-space: pre-wrap; /* Preserves line breaks and spaces from markdown */
+           font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+           font-size: 0.875rem; /* text-sm */
+           background-color: #1f2937; /* gray-800 */
+           padding: 1rem;
+           border-radius: 0.375rem; /* rounded */
+           overflow-x: auto;
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
-  <div class="min-h-screen bg-[url('https://i.imgur.com/kfQ3d2I.jpg')] bg-cover bg-center">
-    <header class="p-6 text-center">
-      <h1 class="text-4xl font-bold">🌌 Nexus Cards</h1>
-      <p class="text-sm mt-2">Gamify your learning. Unlock rare knowledge artifacts.</p>
-    </header>
-
-    <!-- KPIs -->
-    <section class="p-6 max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <div class="bg-gray-800 p-4 rounded shadow">Total Cards Added: <span id="totalCards">0</span></div>
-        <div class="bg-gray-800 p-4 rounded shadow">Courses Completed: <span id="completedCards">0</span></div>
-        <div class="bg-gray-800 p-4 rounded shadow">Completion Rate: <span id="completionRate">0%</span></div>
-      </div>
-
-      <div class="bg-gray-800 p-4 rounded shadow mb-8">
-        <h2 class="text-xl font-semibold mb-2">Player Level</h2>
-        <p>Display Level: <span id="displayLevel">0</span> | True Level: <span id="trueLevel">0</span></p>
-      </div>
-
-      <div class="bg-gray-900 bg-opacity-60 p-4 rounded shadow mb-8">
-        <h2 class="text-xl font-semibold mb-2">Your Nexus Cards</h2>
-        <div id="cardGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
-      </div>
-    </section>
-
-    <!-- Modal -->
-    <div id="cardModal" class="fixed inset-0 hidden bg-black bg-opacity-75 flex items-center justify-center z-50">
-      <div class="bg-gray-800 p-6 rounded-lg max-w-md w-full relative">
-        <button id="closeModal" class="absolute top-2 right-2 text-xl">&times;</button>
-        <h2 id="modalTitle" class="text-2xl font-bold mb-2"></h2>
-        <p><strong>Summary:</strong> <span id="modalSummary"></span></p>
-        <p><strong>Rarity:</strong> <span id="modalRarity"></span></p>
-        <p><strong>Status:</strong> <span id="modalStatus"></span></p>
-        <a id="modalLink" href="#" target="_blank" class="block mt-2 text-blue-400 underline">Watch Video</a>
-      </div>
+<body class="deep-space-nebula text-gray-200 min-h-screen">
+    <div class="container mx-auto p-4 md:p-8">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-wider text-white">NEXUS CARDS</h1>
+            <div id="player-level-display" class="text-right">
+                <!-- Player Level will be injected here -->
+            </div>
+        </header>
+        <!-- Input Section -->
+        <div class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg shadow-lg mb-8">
+            <h2 class="text-xl font-semibold mb-3">Generate New Card</h2>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <input type="text" id="youtube-url-input" class="w-full bg-gray-900/70 border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Paste YouTube URL here...">
+                <button id="generate-card-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-md transition-colors duration-300">
+                    Generate
+                </button>
+            </div>
+            <p id="generate-status" class="text-sm text-gray-400 mt-2 h-4"></p>
+        </div>
+        <!-- Dashboard KPIs -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div class="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg shadow-lg text-center">
+                <h3 class="text-gray-400 text-sm font-medium">Total Cards</h3>
+                <p id="kpi-total-cards" class="text-3xl font-bold">0</p>
+            </div>
+            <div class="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg shadow-lg text-center">
+                <h3 class="text-gray-400 text-sm font-medium">Courses Created</h3>
+                <p id="kpi-courses-created" class="text-3xl font-bold">0</p>
+            </div>
+            <div class="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg shadow-lg text-center">
+                <h3 class="text-gray-400 text-sm font-medium">Completion Rate</h3>
+                <p id="kpi-completion-rate" class="text-3xl font-bold">0%</p>
+            </div>
+        </div>
+        <!-- Card Library -->
+        <main>
+            <h2 class="text-2xl font-bold mb-4">Card Library</h2>
+            <div id="card-library" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <!-- Cards will be dynamically inserted here -->
+                <div id="loading-spinner" class="col-span-full text-center p-10">
+                    <p class="text-lg">Loading Nexus Library...</p>
+                </div>
+            </div>
+        </main>
     </div>
-  </div>
+    <!-- Card Detail Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex justify-center items-center hidden z-50 p-4">
+        <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-2xl w-full max-w-2xl max-h-full overflow-y-auto">
+            <div class="p-6 modal-content modal-hidden">
+                <div class="flex justify-between items-start">
+                    <h2 id="modal-title" class="text-2xl font-bold mb-4"></h2>
+                    <button id="modal-close-btn" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+                </div>
+                
+                <!-- Tabs for Summary/Details -->
+                <div class="flex border-b border-gray-700 mb-4">
+                    <button id="tab-summary" class="tab-button px-4 py-2 font-medium text-sm rounded-tl rounded-tr active">Summary</button>
+                    <button id="tab-details" class="tab-button px-4 py-2 font-medium text-sm rounded-tl rounded-tr">Details</button>
+                    <button id="tab-markdown" class="tab-button px-4 py-2 font-medium text-sm rounded-tl rounded-tr">Markdown</button>
+                </div>
 
-  <script src="script.js"></script>
+                <!-- Tab Content Containers -->
+                <div id="content-summary" class="detail-section active">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <img id="modal-img" src="" alt="Card Art" class="w-full md:w-1/3 object-cover rounded-md">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-lg mb-2">Summary</h3>
+                            <p id="modal-summary" class="text-gray-300 text-sm mb-4"></p>
+                            <a id="modal-doc-link" href="#" target="_blank" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300">View Full Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content-details" class="detail-section">
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-semibold text-gray-400 text-sm">Original Title</h3>
+                            <p id="modal-original-title" class="text-white"></p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-400 text-sm">Status</h3>
+                            <p id="modal-status" class="text-white"></p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-400 text-sm">Rarity Score</h3>
+                            <p id="modal-rarity" class="text-white"></p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-400 text-sm">Insight (ATK)</h3>
+                            <p id="modal-insight" class="text-white"></p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-400 text-sm">Clarity (DEF)</h3>
+                            <p id="modal-clarity" class="text-white"></p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-400 text-sm">Rarity (SPD)</h3>
+                            <p id="modal-rarity-stat" class="text-white"></p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-400 text-sm">Owner ID</h3>
+                            <p id="modal-owner" class="text-white"></p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-400 text-sm">Video Link</h3>
+                            <a id="modal-vid-link" href="#" target="_blank" class="text-blue-400 hover:underline"></a>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-400 text-sm">Document Link</h3>
+                            <a id="modal-doc-link-detail" href="#" target="_blank" class="text-blue-400 hover:underline"></a>
+                        </div>
+                        <!-- Placeholder for future PDF/Audio links -->
+                        <div>
+                            <h3 class="font-semibold text-gray-400 text-sm">PDF Document</h3>
+                            <p class="text-gray-500 italic">Locked. Complete the 'Learn' process to unlock.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-400 text-sm">Audio File</h3>
+                            <p class="text-gray-500 italic">Locked. Complete the 'Learn' process to unlock.</p>
+                        </div>
+                        <!-- Placeholder for Learn/Unlock button -->
+                        <button id="learn-unlock-btn" class="mt-4 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300">
+                            Learn & Unlock Abilities
+                        </button>
+                        <div id="learn-timer" class="mt-2 text-center hidden">
+                            <p class="text-yellow-400 font-semibold">Learning in progress...</p>
+                            <p id="timer-display" class="text-2xl font-mono">--:--</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content-markdown" class="detail-section">
+                    <h3 class="font-semibold text-lg mb-2">Card Data (Markdown)</h3>
+                    <pre id="modal-markdown" class="markdown-content text-gray-300"></pre>
+                    <button id="download-md-btn" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300">
+                        Download Markdown
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

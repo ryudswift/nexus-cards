@@ -1,20 +1,53 @@
 [
   {
-    "id": "WI-042-AI_Business_Prototyping",
-    // --- Data from JSON file ---
-    "cardName": "AI Prototype Engine",
-    "title": "AI-Powered Business Prototyping",
-    "summary": "Leveraging generative AI...",
-    "coverArtUrl": "https://example.com/thumbnail.jpg",
-    "rarityScore": 88,
-    "status": "In Progress", // Updated by sync logic or user actions
-    "level": 2,              // Updated by sync logic or user actions (quizzes)
+    "id": "WI-017-Significant_Income_through_Clipping",
+    "filePath": "cards/wealth/[WI]-017-Significant_Income_through_Clipping.json",
+    "guidePath": "cards/wealth/[WI]-017-Significant_Income_through_Clipping.html",
+    "cardName": "Clipping Profit Matrix",
+    "title": "017-Significant Income through Clipping-sudev",
+    "summary": "This video discusses the process of clipping, which involves taking long-form video content and editing it into engaging short clips for platforms like TikTok and Instagram. By using a specific platform, viewers can tap into a lucrative market that allows for freelance work or larger agency setups, making it a timely opportunity in content creation.",
+    "coverArtUrl": "https://img.youtube.com/vi/9krpfoW0i5E/maxresdefault.jpg",
+    "rarityScore": 75,
+    "status": "Not Started",
+    "level": 1,
     "category": "Wealth",
-    "latentAbility": "Generates one new AI business idea per day.",
-    // --- Derived/Calculated/Workflow Fields ---
-    "guidePath": "cards/wealth/WI-042-AI_Business_Prototyping.html", // Derived from id/category
-    "guideGenerated": true, // (Future) Flag based on HTML file existence check
-    // Fields for dashboard rendering
+    "subcategory": "Income",
+    "latentAbility": "Unlocks 10% faster editing workflow suggestions.",
+    "docUrl": "",
+    "audioUrl": ""
   },
-  // ... more card objects
+  {
+    "id": "WI-748-ProfitAI-Business",
+    "filePath": "cards/wealth/[WI]-748-ProfitAI-Business.json",
+    "guidePath": "cards/wealth/[WI]-748-ProfitAI-Business.html",
+    "cardName": "AI Prototype Engine",
+    "title": "748-ProfitAI-Business-sudev",
+    "summary": "This video showcases Riley Brown, a self-taught entrepreneur, who emphasizes the concept of \"vibe coding\"—a method of quickly creating apps using AI tools. The discussion targets aspiring creators lacking formal coding backgrounds, illustrating how they can build and launch viable tech solutions in a short time. This matters because it democratizes software development, allowing anyone with creativity and drive to innovate in the tech space.",
+    "coverArtUrl": "https://img.youtube.com/vi/J_GCvfto07c/maxresdefault.jpg",
+    "rarityScore": 88,
+    "status": "Not Started",
+    "level": 1,
+    "category": "Wealth",
+    "subcategory": "Income",
+    "latentAbility": "Generates one new AI business idea per day.",
+    "docUrl": "https://docs.google.com/document/d/1W_ELeJVLKxj2Snem6wWxhVF-fCap4s0E6KkftlGXC9w/edit?tab=t.0#heading=h.n56e9sthavvn",
+    "audioUrl": "https://drive.google.com/file/d/1e7L5ZClAFxXRyVIFcGZemQ6NbMaEB3Hp/view?usp=drivesdk"
+  },
+  {
+    "id": "HM-742-Manage_Trading_Risk_Effectively",
+    "filePath": "cards/health/[HM]-742-Manage_Trading_Risk_Effectively.json",
+    "guidePath": "cards/health/[HM]-742-Manage_Trading_Risk_Effectively.html",
+    "cardName": "Risk Horizon Navigator",
+    "title": "742-Manage Trading Risk Effectively-sudev",
+    "summary": "Understanding how moving up time frames in trading increases risk and how to manage that risk effectively using trend lines and position sizing.",
+    "coverArtUrl": "https://img.youtube.com/vi/E_m8LwjiL30/maxresdefault.jpg",
+    "rarityScore": 82,
+    "status": "Not Started",
+    "level": 1,
+    "category": "Health",
+    "subcategory": "Mind",
+    "latentAbility": "Provides +5%冷静 (calm) bonus during high-stress market simulations.",
+    "docUrl": "https://docs.google.com/document/d/1IE50VZl9PW5IEilrPAgWh9b9hnbkpU2apXHNYCx-KEI/edit?tab=t.0#heading=h.n56e9sthavvn",
+    "audioUrl": "https://drive.google.com/file/d/10KCRWxuxbNnSXvEFCpMuPdymN9E4y1kD/view?usp=drivesdk"
+  }
 ]

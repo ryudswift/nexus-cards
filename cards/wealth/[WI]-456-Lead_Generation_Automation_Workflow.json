@@ -1,0 +1,39 @@
+{
+  "id": "WI-456-Lead_Generation_Automation_Workflow",
+  "cardName": "Lead Funnel Automaton",
+  "title": "456-Lead Generation Automation Workflow-sudev",
+  "summary": "This video details a specific automated workflow for generating leads, likely using tools like n8n or similar automation platforms. It focuses on setting up a system that can attract, capture, and nurture potential customers with minimal manual intervention.",
+  "vidUrl": "https://www.youtube.com/watch?v=TARGET_VIDEO_ID_FOR_LEAD_GEN", // Replace with actual ID if different
+  "docUrl": "https://docs.google.com/document/d/1TARGET_DOC_ID_FOR_LEAD_GEN/edit?tab=t.0#heading=h.n56e9sthavvn", // Replace
+  "pdfUrl": "",
+  "audioUrl": "", // Add if available
+  "coverArtUrl": "https://img.youtube.com/vi/TARGET_VIDEO_ID_FOR_LEAD_GEN/maxresdefault.jpg", // Replace ID
+  "rarityScore": 80,
+  "status": "Not Started",
+  "level": 1,
+  "ownerId": "SudoDev",
+  "category": "Wealth",
+  "subcategory": "Income",
+  "latentAbility": "Unlocks a basic lead scoring template for your CRM.",
+  "insight": 250,
+  "clarity": 82,
+  "rarity": 80,
+  "quizLevel1": {
+    "questions": [
+      {
+        "text": "What is the primary goal of a lead generation automation workflow?",
+        "options": ["To manually contact every potential customer", "To attract, capture, and nurture leads with minimal manual effort", "To create marketing videos", "To manage employee schedules"],
+        "correct": "To attract, capture, and nurture leads with minimal manual effort"
+      }
+    ]
+  },
+  "quizLevel2": {
+    "questions": [
+      {
+        "text": "Why is automation valuable in lead generation?",
+        "options": ["It eliminates the need for a website", "It ensures 100% conversion rate", "It saves time and can operate 24/7", "It replaces the need for a sales team entirely"],
+        "correct": "It saves time and can operate 24/7"
+      }
+    ]
+  }
+}

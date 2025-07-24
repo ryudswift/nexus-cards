@@ -1,1 +1,40 @@
 
+{
+  "id": "[CATEGORY_PREFIX]-000-Unique_Card_Name",
+  "cardName": "AI Generated Cyberpunk Name",
+  "title": "Original Source Title (e.g., YouTube Video Title)",
+  "summary": "A concise summary of the key points and value of this knowledge card.",
+  "vidUrl": "https://www.youtube.com/watch?v=...",
+  "docUrl": "https://docs.google.com/document/d/.../edit",
+  "pdfUrl": "",
+  "audioUrl": "",
+  "coverArtUrl": "https://placehold.co/600x400/5a2a88/FFFFFF?text=Card+Art",
+  "rarityScore": 50,
+  "status": "Not Started",
+  "level": 1,
+  "ownerId": "SudoDev",
+  "category": "Health/Wealth/Relationships",
+  "subcategory": "Mind/Body/Soul/Income/Teaching/Selling/Self/Partner-Family-Friends/Strangers-Community",
+  "latentAbility": "A unique benefit unlocked upon reaching Level 3 (Mastered).",
+  "insight": 100,
+  "clarity": 80,
+  "rarity": 50,
+  "quizLevel1": {
+    "questions": [
+      {
+        "text": "Question 1 for basic understanding?",
+        "options": ["Option A", "Option B", "Option C", "Option D"],
+        "correct": "Option B"
+      }
+    ]
+  },
+  "quizLevel2": {
+    "questions": [
+      {
+        "text": "Question 1 for application level understanding?",
+        "options": ["Option A", "Option B", "Option C", "Option D"],
+        "correct": "Option A"
+      }
+    ]
+  }
+}

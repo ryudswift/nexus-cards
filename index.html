@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Cards - Setup Base</title>
+    <title>Nexus Cards - Draft v1.10 Base</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,6 +61,13 @@
                          <div>
                             <h3 id="modal-back-title" class="text-xl font-bold mb-4">Course Intel</h3>
                             <div id="modal-back-content" class="space-y-2"></div>
+                            <!-- Audio Player Section -->
+                            <div id="audio-player-section" class="mt-4 p-3 bg-gray-900 rounded-md hidden">
+                                <h4 class="text-sm font-medium mb-2">Audio Guide</h4>
+                                <audio id="audio-player" controls class="w-full">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
                          </div>
                          <div id="modal-action-buttons" class="mt-4 flex flex-col sm:flex-row gap-2"></div>
                     </div>

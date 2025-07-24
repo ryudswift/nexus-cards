@@ -1,0 +1,39 @@
+{
+  "id": "WI-678-Top_AI_Services_for_2025",
+  "cardName": "AI Service Oracle",
+  "title": "678-Top AI Services for 2025-sudev",
+  "summary": "The speaker shares insights from their experience building AI systems, guiding viewers on which AI solutions are profitable to sell (focusing on quick customer ROI) and which to avoid. It highlights effective services for enhancing sales processes.",
+  "vidUrl": "https://www.youtube.com/watch?v=whXs1RaQIDA",
+  "docUrl": "https://docs.google.com/document/d/18AHACUTEcMpZa1RUm4B3-Q6bhfcRmlQ_cp9L8_ziP_o/edit?tab=t.0#heading=h.n56e9sthavvn",
+  "pdfUrl": "",
+  "audioUrl": "", // Add if available
+  "coverArtUrl": "https://img.youtube.com/vi/whXs1RaQIDA/maxresdefault.jpg",
+  "rarityScore": 85,
+  "status": "Not Started",
+  "level": 1,
+  "ownerId": "SudoDev",
+  "category": "Wealth",
+  "subcategory": "Income",
+  "latentAbility": "Provides a checklist for evaluating the profitability potential of an AI service idea.",
+  "insight": 280,
+  "clarity": 78,
+  "rarity": 85,
+  "quizLevel1": {
+    "questions": [
+      {
+        "text": "According to the video, what is a key factor for an AI service to be profitable?",
+        "options": ["It must use the newest AI model", "It should be free for users", "It should offer a quick return on investment (ROI) for the customer", "It needs to be completely automated"],
+        "correct": "It should offer a quick return on investment (ROI) for the customer"
+      }
+    ]
+  },
+  "quizLevel2": {
+    "questions": [
+      {
+        "text": "What is the main benefit highlighted for the effective AI services discussed?",
+        "options": ["They are the cheapest to build", "They enhance sales processes", "They require no human oversight", "They work for every type of business"],
+        "correct": "They enhance sales processes"
+      }
+    ]
+  }
+}
